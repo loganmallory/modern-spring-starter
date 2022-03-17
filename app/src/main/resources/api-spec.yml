@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: modern-spring-starter
+  description: a description
+  version: 0.0.0
+
+paths:
+  /ping:
+    get:
+      summary: ping the server
+      operationId: getPing
+      responses:
+        '200':
+          description: success
+
+components:
+  schemas:
+    Error:
+      type: object
+      description: An object containing the causal issue when there is a client or server error
+      required:
+        - timestamp
+        - status
+        - error
+        - message
+        - host
+        - path
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: The timestamp (ET zone) of when the error occurred / was caught
+        status:
+          type: integer
+          format: int32
+          description: The HTTP response status code
+        error:
+          type: string
+          description: The type or name of the error
+        message:
+          type: string
+          description: A description or message for the error
+        host:
+          type: string
+          description: The host that received the request
